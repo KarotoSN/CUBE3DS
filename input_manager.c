@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 13:09:27 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/20 16:40:08 by aarab            ###   ########.fr       */
+/*   Updated: 2026/04/20 16:46:50 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ void	rotation(t_cube *cube, int val)
 
 void	letsgo(t_cube *cube, int o)
 {
-	if (o)
+	if (o == 1)
 	{
-		cube->player_x += cube->dir_x * -0.1;
-		cube->player_y += cube->dir_y * -0.1;
+		cube->player_x -= cube->dir_x * -0.1;
+		cube->player_y -= cube->dir_y * -0.1;
 	}
 	else
 	{
-		cube->player_x -= cube->dir_x * 0.1;
-		cube->player_y -= cube->dir_y * 0.1;
+		cube->player_x += cube->dir_x * -0.1;
+		cube->player_y += cube->dir_y * -0.1;
 	}
 }
 
@@ -52,11 +52,13 @@ int	input_manage(int key, t_cube *cube)
 		exit(1);
 	if (key == 119)
 	{
-		letsgo(t_cube * cube, int 1) move(cube);
+		letsgo(cube, 1);
+		move(cube);
 	}
 	if (key == 115)
 	{
-		letsgo(t_cube * cube, int 0) move(cube);
+		letsgo(cube, 0);
+		move(cube);
 	}
 	if (key == 97)
 	{
