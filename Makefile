@@ -7,7 +7,11 @@ MLX         = $(MLX_PATH)/libmlx.a
 
 MLX_FLAGS   = -L$(MLX_PATH) -lmlx -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm
 
-SRCS        = main.c
+SRCS        = main2.c \
+				init_mlx.c \
+				init_engine.c \
+				input_manager.c \
+				drawland.c \
 
 OBJS        = $(SRCS:.c=.o)
 
