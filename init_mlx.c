@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 11:30:37 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/20 13:33:07 by aarab            ###   ########.fr       */
+/*   Updated: 2026/04/23 13:53:16 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,47 @@ void	my_mlx_pixel_put(t_data *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	init_texture(t_cube *cube)
+{
+	int	width;
+	int	height;
+
+	cube->texture_hill.img = mlx_xpm_file_to_image(cube->mlx, "Sonic.xpm",
+			&width, &height);
+	if (cube->texture_hill.img == NULL)
+		exit(1);
+	cube->texture_hill.addr = mlx_get_data_addr(cube->texture_hill.img,
+			&cube->texture_hill.bits_per_pixel, &cube->texture_hill.line_lenght,
+			&cube->texture_hill.endian);
+	cube->sonic.img = mlx_xpm_file_to_image(cube->mlx, "sonicchouf.xpm", &width,
+			&height);
+	if (cube->sonic.img == NULL)
+		exit(1);
+	cube->sonic.addr = mlx_get_data_addr(cube->sonic.img,
+			&cube->sonic.bits_per_pixel, &cube->sonic.line_lenght,
+			&cube->sonic.endian);
+	cube->bendi.img = mlx_xpm_file_to_image(cube->mlx, "bendi.xpm", &width,
+			&height);
+	if (cube->bendi.img == NULL)
+		exit(1);
+	cube->bendi.addr = mlx_get_data_addr(cube->bendi.img,
+			&cube->bendi.bits_per_pixel, &cube->bendi.line_lenght,
+			&cube->bendi.endian);
+			
+			cube->chaos.img = mlx_xpm_file_to_image(cube->mlx, "chaos.xpm", &width,
+			&height);
+	if (cube->chaos.img == NULL)
+		exit(1);
+	cube->chaos.addr = mlx_get_data_addr(cube->chaos.img,
+			&cube->chaos.bits_per_pixel, &cube->chaos.line_lenght,
+			&cube->chaos.endian);
+}
 int	init_mlx(t_cube *cube)
 {
 	cube->mlx = mlx_init();
 	if (!cube->mlx)
 		return (1);
+	init_texture(cube);
 	cube->img.img = mlx_new_image(cube->mlx, 800, 600);
 	cube->img.addr = mlx_get_data_addr(cube->img.img, &cube->img.bits_per_pixel,
 			&cube->img.line_lenght, &cube->img.endian);

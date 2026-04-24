@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 13:09:27 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/20 16:46:50 by aarab            ###   ########.fr       */
+/*   Updated: 2026/04/23 13:44:08 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,22 @@ void	rotation(t_cube *cube, int val)
 	cube->plane_y = old_plane_x * sin(rot_speed) + cube->plane_y
 		* cos(rot_speed);
 }
-
-void	letsgo(t_cube *cube, int o)
+void	colision(t_cube *cube, int o)
 {
-	if (o == 1)
-	{
-		cube->player_x -= cube->dir_x * -0.1;
-		cube->player_y -= cube->dir_y * -0.1;
-	}
+	double	future_x;
+	double	future_y;
+	double	speed;
+
+	if (o)
+		speed = 0.1;
 	else
-	{
-		cube->player_x += cube->dir_x * -0.1;
-		cube->player_y += cube->dir_y * -0.1;
-	}
+		speed = -0.1;
+	future_x = cube->player_x + cube->dir_x * speed;
+	future_y = cube->player_y + cube->dir_y * speed;
+	if (world_map[(int)cube->player_y][(int)future_x] == 0)
+		cube->player_x = future_x;
+	if (world_map[(int)future_y][(int)cube->player_x] == 0)
+		cube->player_y = future_y;
 }
 
 int	input_manage(int key, t_cube *cube)
@@ -52,23 +55,21 @@ int	input_manage(int key, t_cube *cube)
 		exit(1);
 	if (key == 119)
 	{
-		letsgo(cube, 1);
+		colision(cube, 1);
 		move(cube);
 	}
 	if (key == 115)
 	{
-		letsgo(cube, 0);
+		colision(cube, 0);
 		move(cube);
 	}
 	if (key == 97)
 	{
 		rotation(cube, 1);
-		rotation(cube, 1);
 		move(cube);
 	}
 	if (key == 100)
 	{
-		rotation(cube, 0);
 		rotation(cube, 0);
 		move(cube);
 	}

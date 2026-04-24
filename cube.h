@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 11:46:30 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/20 16:39:27 by aarab            ###   ########.fr       */
+/*   Updated: 2026/04/23 13:51:22 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,24 @@ typedef struct s_data
 	int		endian;
 }			t_data;
 
+typedef struct s_text
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_lenght;
+	int		endian;
+}			t_text;
+
 typedef struct s_cube
 {
 	void	*mlx;
 	void	*win;
 	t_data	img;
+	t_text	texture_hill;
+	t_text	sonic;
+	t_text	bendi;
+	t_text	chaos;
 	double	player_x;
 	double	player_y;
 	double	dir_y;
@@ -48,6 +61,10 @@ typedef struct s_cube
 	double	wall_dist_x;
 	double	wall_dist_y;
 	double	wall_dist;
+	double	tex_pos;
+	double	step;
+	int		tex_x;
+	int		tex_y;
 	int		side_x;
 	int		side_y;
 	int		map_x;
@@ -56,6 +73,7 @@ typedef struct s_cube
 	int		draw_start;
 	int		draw_end;
 	int		line_height;
+
 }			t_cube;
 
 int			init_mlx(t_cube *cube);
@@ -71,6 +89,6 @@ void		draw_colomn(t_cube *cube, int x);
 void		move(t_cube *cube);
 void		rotation(t_cube *cube, int val);
 int			input_manage(int key, t_cube *cube);
-void		letsgo(t_cube *cube, int o);
+void		colision(t_cube *cube, int o);
 
 #endif
