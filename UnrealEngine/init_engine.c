@@ -6,21 +6,11 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 11:45:29 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/20 16:41:19 by aarab            ###   ########.fr       */
+/*   Updated: 2026/04/27 16:48:23 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-void	init_engine(t_cube *cube)
-{
-	cube->player_x = 5.5;
-	cube->player_y = 5.5;
-	cube->dir_x = 1.0;
-	cube->dir_y = 0.0;
-	cube->plane_x = 0.0;
-	cube->plane_y = 0.66;
-}
 
 void	prep_rayon(t_cube *cube, int x)
 {
@@ -80,7 +70,7 @@ void	dda(t_cube *cube)
 			cube->map_y += cube->side_y;
 			cube->side = 1;
 		}
-		if (world_map[cube->map_y][cube->map_x] == 1)
+		if (cube->map.map[cube->map_y] && cube->map.map[cube->map_y][cube->map_x] == '1')
 			hit = 1;
 	}
 }

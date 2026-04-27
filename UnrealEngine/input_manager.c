@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 13:09:27 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/23 13:44:08 by aarab            ###   ########.fr       */
+/*   Updated: 2026/04/27 17:22:47 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	colision(t_cube *cube, int o)
 		speed = -0.1;
 	future_x = cube->player_x + cube->dir_x * speed;
 	future_y = cube->player_y + cube->dir_y * speed;
-	if (world_map[(int)cube->player_y][(int)future_x] == 0)
+	if (cube->map.map[(int)cube->player_y][(int)future_x] == '0')
 		cube->player_x = future_x;
-	if (world_map[(int)future_y][(int)cube->player_x] == 0)
+	if (cube->map.map[(int)future_y][(int)cube->player_x] == '0')
 		cube->player_y = future_y;
 }
 

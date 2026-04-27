@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 16:41:34 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/23 13:52:27 by aarab            ###   ########.fr       */
+/*   Updated: 2026/04/27 17:26:09 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	draw_colomn(t_cube *cube, int x)
 	while (y < 600)
 	{
 		if (y < cube->draw_start)
-			my_mlx_pixel_put(&cube->img, x, y, 0x0087FF);
+			my_mlx_pixel_put(&cube->img, x, y, cube->map.ciel);
 		else if (y <= cube->draw_end)
 		{
 			cube->tex_y = (int)cube->tex_pos & 63;
@@ -88,7 +88,7 @@ void	draw_colomn(t_cube *cube, int x)
 			my_mlx_pixel_put(&cube->img, x, y, color);
 		}
 		else
-			my_mlx_pixel_put(&cube->img, x, y, 0x0f8c12);
+			my_mlx_pixel_put(&cube->img, x, y, cube->map.floor);
 		y++;
 	}
 }
