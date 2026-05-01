@@ -15,12 +15,13 @@ SRCS        = main2.c \
 				UnrealEngine/init_engine.c \
 				UnrealEngine/input_manager.c \
 				UnrealEngine/drawland.c \
+				UnrealEngine/mouse.c \
 				Parsing/analyse.c \
 				Parsing/color.c \
 				Parsing/map_check.c \
 				Parsing/parse_all.c \
-				get_next_line.c \
-				get_next_line_utils.c 
+				gnl/get_next_line.c \
+				gnl/get_next_line_utils.c 
 
 
 

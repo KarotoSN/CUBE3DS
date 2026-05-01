@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 11:46:30 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/27 17:15:49 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/01 15:44:04 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,15 @@ typedef struct s_cube
 	int		draw_start;
 	int		draw_end;
 	int		line_height;
+	int		key_w;
+	int		key_s;
+	int		key_d;
+	int		key_a;
 
 }			t_cube;
 
 int			init_mlx(t_cube *cube);
-void		init_engine(t_cube *cube);
+int			game_loop(t_cube *cube);
 void		my_mlx_pixel_put(t_data *img, int x, int y, int color);
 void		prep_rayon(t_cube *cube, int x);
 void		step(t_cube *cube);
@@ -105,7 +109,7 @@ void		calc_line(t_cube *cube);
 void		clear_screan(t_cube *cube);
 void		draw_colomn(t_cube *cube, int x);
 void		move(t_cube *cube);
-void		rotation(t_cube *cube, int val);
+void		rotation(t_cube *cube, double rot_speed);
 int			input_manage(int key, t_cube *cube);
 void		colision(t_cube *cube, int o);
 char		*get_next_line(int fd);
@@ -122,5 +126,9 @@ int			parse_all(t_cube *cube, char *map);
 int			player_check(t_cube *cube);
 char		*get_next_line(int fd);
 void		clean_newline(char *str);
+int			key_press(int key, t_cube *cube);
+int			key_release(int key, t_cube *cube);
+void		colision_cote(t_cube *cube, int dir);
+int			mouse_move(int x, int y, t_cube *cube);
 
 #endif
