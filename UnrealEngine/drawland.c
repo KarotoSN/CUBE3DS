@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 16:41:34 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/01 16:29:31 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/02 17:58:12 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,24 @@ void	clear_screan(t_cube *cube)
 	}
 }
 
+static t_text	*texture_choice(t_cube *cube)
+{
+	if (cube->side)
+	{
+		if (cube->ray_dir_y < 0)
+			return (&cube->texture_hill);
+		else
+			return (&cube->sonic);
+	}
+	else
+	{
+		if (cube->ray_dir_x < 0)
+			return (&cube->bendi);
+		else
+			return (&cube->chaos);
+	}
+}
+
 void	draw_colomn(t_cube *cube, int x)
 {
 	int		y;
@@ -59,20 +77,7 @@ void	draw_colomn(t_cube *cube, int x)
 	char	*pixel;
 	t_text	*r_texture;
 
-	if (cube->side)
-	{
-		if (cube->ray_dir_y < 0)
-			r_texture = &cube->texture_hill;
-		else
-			r_texture = &cube->sonic;
-	}
-	else
-	{
-		if (cube->ray_dir_x < 0)
-			r_texture = &cube->bendi;
-		else
-			r_texture = &cube->chaos;
-	}
+	r_texture = texture_choice(cube);
 	y = 0;
 	while (y < 600)
 	{

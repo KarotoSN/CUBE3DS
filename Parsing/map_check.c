@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 08:56:49 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/27 17:03:04 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/02 17:42:16 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ int	player_check(t_cube *cube)
 		return (1);
 	return (0);
 }
+
 int	wall_check(t_cube *cube)
 {
 	int	x;
 	int	y;
 
-	x = 0;
-	y = 0;
-	while (cube->map.map[y])
+	y = -1;
+	while (cube->map.map[++y])
 	{
 		x = 0;
 		while (cube->map.map[y][x])
@@ -63,7 +63,6 @@ int	wall_check(t_cube *cube)
 			}
 			x++;
 		}
-		y++;
 	}
 	return (1);
 }

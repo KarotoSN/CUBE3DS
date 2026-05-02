@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 11:45:29 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/27 16:48:23 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/01 17:35:56 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	dda(t_cube *cube)
 			cube->map_y += cube->side_y;
 			cube->side = 1;
 		}
-		if (cube->map.map[cube->map_y] && cube->map.map[cube->map_y][cube->map_x] == '1')
+		if (cube->map.map[cube->map_y]
+			&& cube->map.map[cube->map_y][cube->map_x] == '1')
 			hit = 1;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 13:09:27 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/01 17:26:04 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/02 16:42:18 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	rotation(t_cube *cube, double rot_speed)
 	cube->plane_y = old_plane_x * sin(rot_speed) + cube->plane_y
 		* cos(rot_speed);
 }
+
 void	colision(t_cube *cube, int o)
 {
 	double	future_x;
@@ -43,6 +44,7 @@ void	colision(t_cube *cube, int o)
 	if (cube->map.map[(int)future_y][(int)cube->player_x] == '0')
 		cube->player_y = future_y;
 }
+
 void	colision_cote(t_cube *cube, int o)
 {
 	double	future_x;
@@ -64,35 +66,6 @@ void	colision_cote(t_cube *cube, int o)
 		cube->player_x = future_x;
 	if (cube->map.map[(int)future_y][(int)cube->player_x] == '0')
 		cube->player_y = future_y;
-}
-
-int	key_press(int key, t_cube *cube)
-{
-	if (key == 119) // W / Z
-		cube->key_w = 1;
-	if (key == 115) // S
-		cube->key_s = 1;
-	if (key == 97) // A / Q
-		cube->key_a = 1;
-	if (key == 100) // D
-		cube->key_d = 1;
-	if (key == 65307) // ECHAP
-		exit(0);
-	return (0);
-}
-int	key_release(int key, t_cube *cube)
-{
-	if (key == 119) // W / Z
-		cube->key_w = 0;
-	if (key == 115) // S
-		cube->key_s = 0;
-	if (key == 97) // A / Q
-		cube->key_a = 0;
-	if (key == 100) // D
-		cube->key_d = 0;
-	if (key == 65307) // ECHAP
-		exit(0);
-	return (0);
 }
 
 int	game_loop(t_cube *cube)

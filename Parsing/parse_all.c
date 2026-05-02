@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 12:30:44 by aarab             #+#    #+#             */
-/*   Updated: 2026/04/27 17:13:12 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/02 18:02:57 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	clean_newline(char *str)
 		i++;
 	}
 }
+
 int	parse_all(t_cube *cube, char *map)
 {
 	int	rgb_floor;

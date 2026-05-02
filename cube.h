@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 11:46:30 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/01 15:44:04 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/02 16:25:39 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,7 @@ int			key_press(int key, t_cube *cube);
 int			key_release(int key, t_cube *cube);
 void		colision_cote(t_cube *cube, int dir);
 int			mouse_move(int x, int y, t_cube *cube);
+void		free_tab(char **s);
+int			close_game(t_cube *cube);
 
 #endif
