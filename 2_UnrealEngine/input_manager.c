@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 13:09:27 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/02 16:42:18 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/04 11:24:34 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ int	game_loop(t_cube *cube)
 	if (cube->key_a == 1)
 		colision_cote(cube, 0);
 	move(cube);
+	draw_minimap(cube);
+	mlx_put_image_to_window(cube->mlx, cube->win, cube->img.img, 0, 0);
 	return (0);
 }

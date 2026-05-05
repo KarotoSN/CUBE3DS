@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 15:09:19 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/02 17:40:48 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/04 10:58:46 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,12 +105,14 @@ void	format_map(t_cube *cube)
 			max_len = (int)ft_strlen(cube->map.map[i]);
 	}
 	new_map = malloc(sizeof(char *) * (i + 1));
+	if (!new_map)
+		return ;
 	new_map[i] = NULL;
 	while (--i >= 0)
 	{
 		new_map[i] = malloc(max_len + 1);
 		if (!new_map[i])
-			return ;
+			free_tab(new_map);
 		copy_map_line(new_map[i], cube->map.map[i], max_len);
 	}
 	free_tab(cube->map.map);

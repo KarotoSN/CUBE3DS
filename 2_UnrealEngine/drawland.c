@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 16:41:34 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/02 17:58:12 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/05 14:22:39 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,16 +103,16 @@ void	move(t_cube *cube)
 	int	x;
 
 	x = 0;
-	clear_screan(cube);
 	while (x < 800)
 	{
 		prep_rayon(cube, x);
 		step(cube);
 		dda(cube);
 		wall_dist(cube);
+		cube->z_buffer[x] = cube->wall_dist;
 		calc_line(cube);
 		draw_colomn(cube, x);
 		x++;
 	}
-	mlx_put_image_to_window(cube->mlx, cube->win, cube->img.img, 0, 0);
+	render_sprite(cube);
 }
