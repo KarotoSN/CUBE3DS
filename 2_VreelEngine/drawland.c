@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 16:41:34 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/05 14:22:39 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/07 14:11:28 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	draw_colomn(t_cube *cube, int x)
 			pixel = r_texture->addr + (cube->tex_y * r_texture->line_lenght
 					+ cube->tex_x * (r_texture->bits_per_pixel / 8));
 			color = *(unsigned int *)pixel;
+			color = (color >> 1) & 8355711;
 			my_mlx_pixel_put(&cube->img, x, y, color);
 		}
 		else

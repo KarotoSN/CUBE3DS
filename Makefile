@@ -11,24 +11,24 @@ MLX         = $(MLX_PATH)/libmlx.a
 MLX_FLAGS   = -L$(MLX_PATH) -lmlx -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm
 
 SRCS        = main2.c \
-				2_UnrealEngine/init_mlx.c \
-				2_UnrealEngine/init_engine.c \
-				2_UnrealEngine/input_manager.c \
-				2_UnrealEngine/drawland.c \
-				2_UnrealEngine/mouse.c \
-				2_UnrealEngine/key_manage.c \
+				0_GNL/get_next_line.c \
+				0_GNL/get_next_line_utils.c \
 				1_Parsing/analyse.c \
 				1_Parsing/color.c \
 				1_Parsing/map_check.c \
 				1_Parsing/parse_all.c \
 				1_Parsing/init_player.c \
-				gnl/get_next_line.c \
-				gnl/get_next_line_utils.c \
-				Free/free.c \
-				Free/close_game.c \
+				2_VreelEngine/init_mlx.c \
+				2_VreelEngine/init_engine.c \
+				2_VreelEngine/input_manager.c \
+				2_VreelEngine/drawland.c \
+				2_VreelEngine/mouse.c \
+				2_VreelEngine/key_manage.c \
 				3_Minimap/minimap.c \
 				4_Sprites/find_sprite.c \
-				4_Sprites/calcul.c
+				4_Sprites/calcul.c \
+				5_Free/free.c \
+				5_Free/close_game.c \
 
 
 

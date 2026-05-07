@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 12:22:24 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/05 15:44:31 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/07 13:50:51 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void	render_sprite(t_cube *cube)
 	t_calc_spr	spr;
 
 	i = 0;
+	ft_bzero(&spr, sizeof(t_calc_spr));
 	sprite_sort(cube);
 	while (i < cube->sprites_count)
 	{

@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 12:48:46 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/02 16:39:49 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/07 14:02:16 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ int	close_game(t_cube *cube)
 	mlx_destroy_image(cube->mlx, cube->bendi.img);
 	mlx_destroy_image(cube->mlx, cube->chaos.img);
 	mlx_destroy_image(cube->mlx, cube->img.img);
+	if (cube->sprites)
+	{
+		free(cube->sprites);
+		cube->sprites = NULL;
+	}
+	if (cube->sprite_text.img)
+		mlx_destroy_image(cube->mlx, cube->sprite_text.img);
 	mlx_mouse_show(cube->mlx, cube->win);
 	mlx_destroy_window(cube->mlx, cube->win);
 	mlx_destroy_display(cube->mlx);
