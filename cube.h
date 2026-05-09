@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/10 11:46:30 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/05 15:00:58 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/09 12:32:22 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ typedef struct s_calc_spr
 	double		inv_det;
 	double		trans_x;
 	double		trans_y;
+	double		tex_pos;
+	double		step;
 	int			screen_x;
 	int			height;
 	int			width;
@@ -78,8 +80,7 @@ typedef struct s_calc_spr
 	int			end_x;
 	int			tex_x;
 	int			tex_y;
-	double		tex_pos;
-	double		step;
+
 }				t_calc_spr;
 
 typedef struct s_cube
@@ -94,7 +95,7 @@ typedef struct s_cube
 	t_text		chaos;
 	t_text		sprite_text;
 	t_sprites	*sprites;
-	int			sprites_count;
+
 	double		z_buffer[800];
 	double		player_x;
 	double		player_y;
@@ -113,6 +114,7 @@ typedef struct s_cube
 	double		tex_pos;
 	double		step;
 	int			tex_x;
+	int			sprites_count;
 	int			tex_y;
 	int			side_x;
 	int			side_y;
@@ -141,13 +143,12 @@ void			clear_screan(t_cube *cube);
 void			draw_colomn(t_cube *cube, int x);
 void			move(t_cube *cube);
 void			rotation(t_cube *cube, double rot_speed);
-int				input_manage(int key, t_cube *cube);
 void			colision(t_cube *cube, int o);
 char			*get_next_line(int fd);
 char			*ft_strjoin2(char *s1, char *s2);
 char			*ft_strchr2(const char *s1, int c);
 size_t			ft_strlen2(const char *s);
-void			extract_map(t_cube *cube, int map_fichier, char *line);
+int				extract_map(t_cube *cube, int map_fichier, char *line);
 void			config_search(t_cube *cube, char *fichier);
 void			format_map(t_cube *cube);
 int				get_rgb_color(char *string_rgb);
@@ -167,5 +168,7 @@ void			free_cube(t_cube *cube);
 void			draw_minimap(t_cube *cube);
 int				init_sprites(t_cube *cube);
 void			render_sprite(t_cube *cube);
+void			flush_gnl(int fd);
+void			check_chars(t_cube *cube);
 
 #endif

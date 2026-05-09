@@ -6,22 +6,44 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/25 15:09:19 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/04 10:58:46 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/09 12:27:15 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube.h"
 
-void	extract_map(t_cube *cube, int map_fichier, char *line)
+static int	empty_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\n' && line[i] != '\t')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+int	extract_map(t_cube *cube, int map_fichier, char *line)
 {
 	char	*mega_string;
 	char	*temp;
-	int		i;
+	int		empty_flag;
 
-	i = 0;
+	empty_flag = 0;
 	mega_string = ft_strdup("");
 	while (line != NULL)
 	{
+		if (empty_line(line) == 1)
+			empty_flag = 1;
+		else if (empty_flag == 1)
+		{
+			printf("Error\nLa map est séparée par une ligne vide.\n");
+			free(line);
+			free(mega_string);
+			return (0);
+		}
 		temp = mega_string;
 		mega_string = ft_strjoin(temp, line);
 		free(temp);
@@ -31,6 +53,7 @@ void	extract_map(t_cube *cube, int map_fichier, char *line)
 	cube->map.map = ft_split(mega_string, '\n');
 	free(mega_string);
 	format_map(cube);
+	return (1);
 }
 
 static int	parse_nswe(t_cube *cube, char *line)
@@ -70,7 +93,13 @@ void	config_search(t_cube *cube, char *fichier)
 	{
 		if (!parse_nswe(cube, line))
 		{
-			extract_map(cube, map_fichier, line);
+			if (extract_map(cube, map_fichier, line) == 0)
+			{
+				free_cube(cube);
+				flush_gnl(map_fichier);
+				close(map_fichier);
+				exit(0);
+			}
 			break ;
 		}
 		free(line);

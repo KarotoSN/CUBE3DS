@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/27 12:30:44 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/04 11:56:18 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/09 12:34:48 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ int	parse_all(t_cube *cube, char *map)
 		printf("Error\nMur pas fermer l'ami !\n");
 		return (0);
 	}
+	
 	if (init_sprites(cube) == 0)
 	{
 		printf("Error\nErreur allocation sprites\n");
 		return (0);
 	}
+	check_chars(cube);
 	return (1);
 }

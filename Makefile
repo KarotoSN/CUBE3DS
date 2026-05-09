@@ -10,7 +10,7 @@ MLX         = $(MLX_PATH)/libmlx.a
 
 MLX_FLAGS   = -L$(MLX_PATH) -lmlx -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm
 
-SRCS        = main2.c \
+SRCS        = main.c \
 				0_GNL/get_next_line.c \
 				0_GNL/get_next_line_utils.c \
 				1_Parsing/analyse.c \

@@ -6,7 +6,7 @@
 /*   By: aarab <aarab@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/02 12:48:46 by aarab             #+#    #+#             */
-/*   Updated: 2026/05/07 14:02:16 by aarab            ###   ########.fr       */
+/*   Updated: 2026/05/09 12:36:32 by aarab            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	close_game(t_cube *cube)
 	mlx_destroy_window(cube->mlx, cube->win);
 	mlx_destroy_display(cube->mlx);
 	free(cube->mlx);
-	exit(0);
+	exit(1);
 	return (0);
 }

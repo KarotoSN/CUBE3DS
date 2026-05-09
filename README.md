@@ -107,5 +107,35 @@ Artificial Intelligence Usage
     Tasks: AI was utilized to debug memory leaks (specifically tracking down unreachable blocks related to XPM image allocations in the MinilibX) and to break down complex linear algebra formulas regarding matrix inversion for sprite translations.
 
     Review Process: All generated explanations were independently verified using standard mathematics documentation. Code suggestions for debugging were manually reviewed, adapted to fit the project's strict architectural norms, and thoroughly tested with Valgrind before implementation to ensure complete comprehension and ownership of the final source code.
+```
 
     
+    
+
+| KEY           | Action        |
+| ------------- |:-------------:|
+| `ESC`         | exit game     |
+| `Q`           | move left     |
+| `D`           | move right    |
+| `Z`           | move forward  |
+| `S`           | move backward |
+| `→`           | turn right    |
+| `←`           | turn left     |
+
+<h3>
+Map
+</h3>
+
+| Character      | Description   |
+| -------------  |:-------------:|
+| `1`            | wall          |
+| `0`            | floor         |
+| `2`            | sprite #1     |
+| `N`/`E`/`W`/`S`| player initial position + orientation|
+| `NO`            | north texture file         |
+| `SO`            | south texture file|
+| `WE`            | west  texture file|
+| `EA`            | east  texture file|
+| `F`            | floor rgb color |
+| `C`            | celling rgb color|
+```shell
